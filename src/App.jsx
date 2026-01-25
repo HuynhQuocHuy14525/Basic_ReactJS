@@ -1,11 +1,20 @@
+// src/App.jsx
 import { useState } from 'react';
+import './App.css';
+
+// Week 1 Components
 import ProductCard from './components/Week1/ProductCard';
 import Button from './components/Week1/Button';
 import Alert from './components/Week1/Alert';
 import LoginForm from './components/Week1/LoginForm';
 import ProductList from './components/Week1/ProductList';
-import PromiseExample from './components/Week2/Promise';
-import './App.css';
+
+// Week 2 Components
+import StudentInfo from './components/Week2/StudentInfo';
+import Counter from './components/Week2/Counter';
+import InputForm from './components/Week2/InputForm';
+import StatusManager from './components/Week2/StatusBadge';
+import TodoApp from './components/Week2/TodoApp';
 
 function App() {
   const [currentWeek, setCurrentWeek] = useState(1);
@@ -14,20 +23,21 @@ function App() {
   // Hàm chuyển tuần và reset tab mặc định
   const changeWeek = (week) => {
     setCurrentWeek(week);
-    setActiveTab(week === 1 ? 'bai1' : 'promise');
+    // Nếu sang tuần 2 thì default tab là 'bai1', tuần 1 cũng vậy
+    setActiveTab('bai1'); 
   };
 
   return (
     <div className="app-container">
       <h1 style={{ marginBottom: '40px', letterSpacing: '5px' }}>PHÁT TRIỂN GIAO DIỆN ỨNG DỤNG</h1>
       
-      {/* MENU TUẦN */}
+      {/* MENU CHỌN TUẦN */}
       <nav className="week-menu">
         <span className={`week-item ${currentWeek === 1 ? 'active-week' : ''}`} onClick={() => changeWeek(1)}>Week 01</span>
         <span className={`week-item ${currentWeek === 2 ? 'active-week' : ''}`} onClick={() => changeWeek(2)}>Week 02</span>
       </nav>
 
-      {/* MENU BÀI TẬP */}
+      {/* MENU CHỌN BÀI TẬP */}
       <nav className="tab-menu">
         {currentWeek === 1 ? (
           <>
@@ -39,12 +49,16 @@ function App() {
           </>
         ) : (
           <>
-            <button className={`nav-btn ${activeTab === 'promise' ? 'active' : ''}`} onClick={() => setActiveTab('promise')}>Bài 1: Promise API</button>
+            <button className={`nav-btn ${activeTab === 'bai1' ? 'active' : ''}`} onClick={() => setActiveTab('bai1')}>Bài 1: Student</button>
+            <button className={`nav-btn ${activeTab === 'bai2' ? 'active' : ''}`} onClick={() => setActiveTab('bai2')}>Bài 2: Counter</button>
+            <button className={`nav-btn ${activeTab === 'bai3' ? 'active' : ''}`} onClick={() => setActiveTab('bai3')}>Bài 3: Form</button>
+            <button className={`nav-btn ${activeTab === 'bai4' ? 'active' : ''}`} onClick={() => setActiveTab('bai4')}>Bài 4: Status</button>
+            <button className={`nav-btn ${activeTab === 'bai5' ? 'active' : ''}`} onClick={() => setActiveTab('bai5')}>Bài 5: Todo</button>
           </>
         )}
       </nav>
 
-      {/* NỘI DUNG HIỂN THỊ */}
+      {/* KHU VỰC HIỂN THỊ */}
       <div className="demo-area">
         {currentWeek === 1 && (
           <>
@@ -69,7 +83,11 @@ function App() {
 
         {currentWeek === 2 && (
           <>
-            {activeTab === 'promise' && <section><h2>Tuần 2: Thực hành Promise</h2><PromiseExample /></section>}
+            {activeTab === 'bai1' && <section><h2>Bài 1: Giới thiệu Sinh viên</h2><StudentInfo /></section>}
+            {activeTab === 'bai2' && <section><h2>Bài 2: Counter App</h2><Counter /></section>}
+            {activeTab === 'bai3' && <section><h2>Bài 3: Controlled Form</h2><InputForm /></section>}
+            {activeTab === 'bai4' && <section><h2>Bài 4: Status Badge</h2><StatusManager /></section>}
+            {activeTab === 'bai5' && <section><h2>Bài 5: Todo List</h2><TodoApp /></section>}
           </>
         )}
       </div>
