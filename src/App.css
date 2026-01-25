@@ -1,42 +1,107 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --galaxy-bg: #0b0d17;
+  --galaxy-card: rgba(255, 255, 255, 0.05);
+  --neon-blue: #00d2ff;
+  --neon-purple: #9d50bb;
+  --text-main: #e2e8f0;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top right, #1a1c2c, #0b0d17);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/*  Menu chọn Tuần */
+.week-menu {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 30px;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.week-item {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.week-item:hover { color: var(--neon-blue); }
+
+.week-item.active-week {
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue);
 }
 
-.card {
-  padding: 2em;
+/* Menu */
+.tab-menu {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  min-height: 45px;
 }
 
-.read-the-docs {
-  color: #888;
+.nav-btn {
+  padding: 10px 20px;
+  background: var(--galaxy-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--neon-purple);
+}
+
+.nav-btn.active {
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+  color: white;
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}
+
+.demo-area {
+  background: var(--galaxy-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: left;
+  backdrop-filter: blur(20px);
+  
+  min-height: 500px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-area h2 {
+  font-weight: 600;
+  margin-bottom: 25px;
+  background: linear-gradient(to right, #00d2ff, #9d50bb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-left: 4px solid var(--neon-blue);
+  padding-left: 15px;
 }
