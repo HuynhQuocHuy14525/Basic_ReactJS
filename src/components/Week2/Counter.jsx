@@ -16,7 +16,6 @@ const Counter = () => {
     }
   };
 
-  // Hàm reset
   const reset = () => {
     setCount(0);
   };
@@ -32,17 +31,15 @@ const Counter = () => {
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
       <h3 style={{ marginBottom: '20px' }}>Bộ Đếm (Counter App)</h3>
-      
-      {/* Hiển thị số */}
       <div style={numberStyle}>
         {count}
       </div>
 
-      {/* Các nút bấm */}
+     
       <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
         <button 
           onClick={decrement} 
-          disabled={count === 0} // Disable nút nếu số là 0
+          disabled={count === 0}
           style={{ padding: '10px 20px', background: '#e74c3c', color: 'white', opacity: count === 0 ? 0.5 : 1 }}
         >
           - Giảm
