@@ -1,25 +1,24 @@
 import { useState, useEffect } from 'react';
 
 const PromiseExample = () => {
-  const [products, setProducts] = useState([]);
+  const [dataList, setDataList] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Sử dụng fetch (trả về một Promise)
-    fetch('https://fakestoreapi.com/products?limit=5')
+    fetch('https://696d77dcf4a79b3151813e1f.mockapi.io/api/v1/users?limit=5') 
       .then((response) => {
         if (!response.ok) {
           throw new Error('Mạng có vấn đề, không lấy được dữ liệu');
         }
-        return response.json(); // .json() cũng trả về một Promise
+        return response.json();
       })
       .then((data) => {
-        setProducts(data); // Thành công: Lưu dữ liệu vào state
+        setDataList(data); 
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message); // Thất bại: Lưu lỗi
+        setError(err.message);
         setLoading(false);
       });
   }, []);
@@ -29,11 +28,30 @@ const PromiseExample = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>Danh sách sản phẩm (Dùng Promise)</h2>
-      <ul>
-        {products.map((item) => (
-          <li key={item.id}>
-            <strong>{item.title}</strong> - {item.price}$
+      <h2>Danh sách Users (Từ MockAPI)</h2>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        {dataList.map((item) => (
+          <li key={item.id} style={{ 
+              marginBottom: '10px', 
+              background: '#f4f4f4', 
+              padding: '10px', 
+              borderRadius: '5px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              color: '#333'
+            }}>
+            {/* 2. SỬA HIỂN THỊ: Dùng avatar và name khớp với JSON */}
+            <img 
+              src={item.avatar} 
+              alt={item.name} 
+              style={{ width: '50px', height: '50px', borderRadius: '50%' }}
+            />
+            <div>
+              <strong>{item.name}</strong>
+              <br/>
+              <small>ID: {item.id}</small>
+            </div>
           </li>
         ))}
       </ul>
