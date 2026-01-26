@@ -9,7 +9,7 @@ const Counter = () => {
     setCount(count + 1);
   };
 
-  // Hàm giảm (Chặn không cho nhỏ hơn 0)
+  // Hàm giảm
   const decrement = () => {
     if (count > 0) {
       setCount(count - 1);
@@ -21,12 +21,11 @@ const Counter = () => {
     setCount(0);
   };
 
-  // Style động: Màu đỏ khi > 10, ngược lại màu trắng
   const numberStyle = {
     fontSize: '4rem',
     fontWeight: 'bold',
     margin: '20px 0',
-    color: count > 10 ? '#ff4d4f' : '#fff', // Yêu cầu nâng cao
+    color: count > 10 ? '#ff4d4f' : '#fff',
     transition: 'color 0.3s ease'
   };
 
